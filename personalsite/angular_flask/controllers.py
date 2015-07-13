@@ -35,13 +35,7 @@ crud_url_models = app.config['CRUD_URL_MODELS']
 @app.route('/<model_name>/')
 @app.route('/<model_name>/<item_id>')
 def rest_pages(model_name, item_id=None):
-    if model_name in crud_url_models:
-        model_class = crud_url_models[model_name]
-        if item_id is None or session.query(exists().where(
-                model_class.id == item_id)).scalar():
-            return make_response(open(
-                'angular_flask/templates/index.html').read())
-    abort(404)
+        return make_response(open('angular_flask/templates/index.html').read())
 
 
 # special file handlers and error handlers
