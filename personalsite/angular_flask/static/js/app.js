@@ -1,7 +1,15 @@
 'use strict';
 
-angular.module('AngularFlask', ['angularFlaskServices'])
-	.config(['$routeProvider', '$locationProvider',
+angular.module('personalsite', 'personalsite.home' ['angularFlaskServices', 'ngNewRouter'])
+    .controller("AppController", ['$router', AppController]);
+
+    function AppController ($router) {
+        $router.config([
+            {path: '/', component:'home'}
+        ]);
+    }
+
+	/*.config(['$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {
 		$routeProvider
 		.when('/', {
@@ -29,5 +37,5 @@ angular.module('AngularFlask', ['angularFlaskServices'])
 		;
 
 		$locationProvider.html5Mode(true);
-	}])
-;
+	}])*/
+
