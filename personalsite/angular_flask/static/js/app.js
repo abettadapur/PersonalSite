@@ -14,11 +14,11 @@ angular.module('AngularFlask', ['angularFlaskServices'])
 		})
 		.when('/projects', {
 			templateUrl: 'static/partials/project-grid.html',
-			controller: PostListController
+			controller: ProjectGridController
 		})
 		.when('/projects/:projectId', {
 			templateUrl: '/static/partials/project-detail.html',
-			controller: PostDetailController
+			controller: ProjectDetailController
 		}).when('/contact', {
 			templateUrl: 'static/partials/contact.html',
 			controller: AboutController

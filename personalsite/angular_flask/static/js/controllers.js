@@ -10,14 +10,14 @@ function AboutController($scope) {
 	
 }
 
-function ProjectGridController($scope, Post) {
-	var projectsQuery = Project.get({}, function(projects) {
+function ProjectGridController($scope, Project) {
+	var projectsQuery = Project.ListProjects({}, function(projects) {
 		$scope.projects = projects.objects;
 	});
 }
 
 function ProjectDetailController($scope, $routeParams, Project) {
-	var projectQuery = Project.get({ projectId: $routeParams.projectId }, function(project) {
+	var projectQuery = Project.GetProject({ id: $routeParams.projectId }, function(project) {
 		$scope.project = project;
 	});
 }

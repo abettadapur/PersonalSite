@@ -6,9 +6,12 @@ from angular_flask import app
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
-
-    def __init__(self, title):
-        self.title = title
+    description = db.Column(db.String(1024))
+    start_date = db.Column(db.DateTime,default=datetime.utcnow)
+    end_date = db.Column(db.DateTime,default=datetime.utcnow)
+    location = db.Column(db.String(80))
+    image_src = db.Column(db.String(1024))
+    project_url = db.Column(db.String(1024))
 
     def __repr__(self):
         return '<Project %r>' % self.title
@@ -16,11 +19,12 @@ class Project(db.Model):
 class WorkExperience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
-    start_date = db.Column(db.DateTime)
-    end_date = db.Column(db.DateTime)
+    start_date = db.Column(db.DateTime,default=datetime.utcnow)
+    end_date = db.Column(db.DateTime,default=datetime.utcnow)
     current = db.Column(db.Boolean)
     location = db.Column(db.String(80))
-    description = db.Column(db.String(80))
+    description = db.Column(db.String(1024))
+    image_src = db.Column(db.String(1024))
     items = db.relationship('WorkItem', backref='work_experience', lazy='joined')
 
     def __repr__(self):
@@ -31,7 +35,7 @@ class WorkItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
     work_experience_id = db.Column(db.Integer, db.ForeignKey("work_experience.id"))
-    description = db.Column(db.String(255))
+    description = db.Column(db.String(1024))
 
     def __repr__(self):
         return '<WorkItem %d>' % self.order

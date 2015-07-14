@@ -2,11 +2,17 @@
 
 angular.module('angularFlaskServices', ['ngResource'])
 	.factory('Project', function($resource) {
-		return $resource('/api/projects/:projectId', {}, {
-			query: {
+		return $resource('/api/project/', {}, {
+			ListProjects: {
 				method: 'GET',
-				params: { projectId: '' },
-				isArray: true
+				params: {},
+				isArray: false
+			},
+			GetProject: {
+				method: 'GET',
+				url: '/api/project/:id',
+				params: {},
+				isArray: false
 			}
 		});
 	})
