@@ -1,13 +1,22 @@
 'use strict';
 
-angular.module('personalsite', 'personalsite.home' ['angularFlaskServices', 'ngNewRouter'])
+angular.module('personalsite',  ['personalsite.home', 'angularFlaskServices', 'ngNewRouter'])
+	//.config(componentLoaderConfig)
     .controller("AppController", ['$router', AppController]);
 
-    function AppController ($router) {
-        $router.config([
-            {path: '/', component:'home'}
-        ]);
-    }
+function AppController ($router) {
+	console.log("AppController Called");
+    $router.config([
+        {path: '/', component:'home'}
+    ]);
+}
+
+function componentLoaderConfig($componentLoaderProivder)
+{
+	$componentLoaderProivder.setTemplateMapping(function(name) {
+		return './static/components/'+name+"/"+name+".html";
+	});
+}
 
 	/*.config(['$routeProvider', '$locationProvider',
 		function($routeProvider, $locationProvider) {

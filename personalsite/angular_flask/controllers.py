@@ -25,6 +25,11 @@ def basic_pages(**kwargs):
     return make_response(open('angular_flask/templates/index.html').read())
 
 
+@app.route('/components/<path:filename>')
+def base_static(filename):
+    return send_from_directory(app.static_folder+"/components",filename)
+
+
 # routing for CRUD-style endpoints
 # passes routing onto the angular frontend if the requested resource exists
 from sqlalchemy.sql import exists
