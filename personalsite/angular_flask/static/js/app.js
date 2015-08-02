@@ -7,7 +7,10 @@ angular.module('personalsite',  ['personalsite.home', 'angularFlaskServices', 'n
 function AppController ($router) {
 	console.log("AppController Called");
     $router.config([
-        {path: '/', component:'home'}
+        {path: '/', component:'home'},
+        {path: '/about', component:'about'},
+        {path: '/projects', component:'projects'},
+        {path: '/project/<projectid>', component:'project'}
     ]);
 }
 
