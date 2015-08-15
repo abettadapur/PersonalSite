@@ -22,29 +22,26 @@
 	</head>
 
 	<body ng-app="personalsite" ng-controller="AppController">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-			          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			            <span class="sr-only">Toggle navigation</span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			            <span class="icon-bar"></span>
-			          </button>
-			          <a class="navbar-brand" href="#">Personal Site</a>
-        		</div>
-			</div>
-		</nav>
-		<div class="container page">
-			<div id="content" class="container main">
-				<div class="no-overflow" style="padding-top: 40px">
-					<ng-viewport></ng-viewport>
-				</div>
-			</div>
-		</div>
-
-		   <footer class="footer">
-        <div class="container">
+    <div id="wrap">
+		  <nav class="navbar navbar-default navbar-fixed-top">
+			  <div class="container">
+				  <div class="navbar-header">
+			            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			              <span class="sr-only">Toggle navigation</span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			              <span class="icon-bar"></span>
+			            </button>
+			            <a class="navbar-brand" href="#">Personal Site</a>
+          		</div>
+			  </div>
+		  </nav>
+      <div class="container-fluid">
+					  <ng-viewport></ng-viewport>
+		  </div>
+    </div>
+		<footer class="footer">
+      <div class="container">
         <p class="text-muted">Contact info, links, and so on. This will be prettier.</p>
       </div>
     </footer>
