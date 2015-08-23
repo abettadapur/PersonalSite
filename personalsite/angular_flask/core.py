@@ -6,8 +6,6 @@ from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy(app)
 
-
-
 api_manager = APIManager(app, flask_sqlalchemy_db=db)
 
 from angular_flask.models import Project, WorkExperience, WorkItem, Skill

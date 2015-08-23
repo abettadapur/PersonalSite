@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularFlaskServices', ['ngResource'])
+angular.module('personalsite', ['ngResource'])
 	.factory('Project', function($resource) {
 		return $resource('/api/project/', {}, {
 			ListProjects: {
