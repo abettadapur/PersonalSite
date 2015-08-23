@@ -14,14 +14,11 @@ def create_sample_db_entry(api_endpoint, payload):
         headers={'Content-Type': 'application/json'})
     print r.text
 
-
 def create_db():
     db.create_all()
 
-
 def drop_db():
     db.drop_all()
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -34,12 +31,12 @@ def main():
 
     if args.command == 'create_db':
         create_db()
-
         print "DB created!"
+
     elif args.command == 'delete_db':
         drop_db()
-
         print "DB deleted!"
+
     elif args.command == 'seed_db' and args.seedfile:
         with open(args.seedfile, 'r') as f:
             seed_data = json.loads(f.read())

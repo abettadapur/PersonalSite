@@ -6,12 +6,15 @@ from angular_flask import app
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
-    description = db.Column(db.String(1024))
+    short_description = db.Column(db.String(1024))
+    description = db.Column(db.String(4096))
     start_date = db.Column(db.DateTime,default=datetime.utcnow)
     end_date = db.Column(db.DateTime,default=datetime.utcnow)
     location = db.Column(db.String(80))
-    image_src = db.Column(db.String(1024))
+    small_image_src = db.Column(db.String(1024))
+    large_image_src = db.Column(db.String(1024))
     project_url = db.Column(db.String(1024))
+    gallry_images = db.relationship('ProjectImage', backref='project_experience', lazy='joined')
 
     def __repr__(self):
         return '<Project %r>' % self.title
@@ -30,7 +33,6 @@ class WorkExperience(db.Model):
     def __repr__(self):
         return '<WorkExperience %r>' % self.title
 
-
 class WorkItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.Integer)
@@ -40,7 +42,6 @@ class WorkItem(db.Model):
     def __repr__(self):
         return '<WorkItem %d>' % self.order
 
-
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
@@ -49,6 +50,16 @@ class Skill(db.Model):
     def __repr__(self):
         return '<Skill %r>' % self.title
 
+class ProjectImage(db.Model):
+    """Simple model to relate to other fields"""
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(80))
+    caption = db.Column(db.String(1024))
+    image_src = db.Column(db.String(1024))
+    work_experience_id = db.Column(db.Integer, db.ForeignKey("project.id"))
+
+    def __repr__(self):
+        return '<ProjectImage %r>' % self.title
 
 # models for which we want to create API endpoints
 app.config['API_MODELS'] = {

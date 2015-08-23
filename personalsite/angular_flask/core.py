@@ -10,8 +10,6 @@ api_manager = APIManager(app, flask_sqlalchemy_db=db)
 
 from angular_flask.models import Project, WorkExperience, WorkItem, Skill
 
-#db.create_all()
-
 api_manager.create_api(Project, methods=['GET', 'POST', 'DELETE', 'PUT'])
 api_manager.create_api(WorkExperience, methods=['GET', 'POST', 'DELETE', 'PUT'])
 api_manager.create_api(WorkItem, methods=['GET', 'POST', 'DELETE', 'PUT'])
